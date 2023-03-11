@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block titulo %} Dashboard - Administrador {% endblock %}
+{% block usuario %} Dashboard {% endblock %}
+
+{% block body %}
+<div class="home-content">
+    <div class="overview-boxes">
+        <div class="box">
+            <form class="form-signin" action="/add_contact" method="POST">
+                <img class="mb-4" src="{{ url_for('static', filename='/images/logo_cul_2015.png') }}" alt="" width="200" height="80">
+
+                <h1 class="h3 mb-3 fw-normal">Insertar perfil</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="perfilname" name="perfilname" placeholder="perfilname">
+                    <label for="perfilname">Perfil Name</label>
+                </div>
+                <div class="form-floating mt-4">
+                    <input type="text" class="form-control" id="Tipo" name="Tipo" placeholder="Tipo">
+                    <label for="Tipo">Descripcion</label>
+                </div>
+                
+                <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Insertar perfil</button>
+            </form>
+        </div>
+
+        <div class="box">
+            <form class="form-signin" action="/add_contact" method="POST">
+                <img class="mb-4" src="{{ url_for('static', filename='/images/logo_cul_2015.png') }}" alt="" width="200" height="80">
+
+                <h1 class="h3 mb-3 fw-normal">Insertar Usuario</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" id="contraseña" name="contraseña" placeholder="contraseña">
+                    <label for="contraseña">Contraseña</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="phone">
+                    <label for="phone">Phone</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" id="perfilid" name="perfilid" placeholder="perfilid">
+                    <label for="perfilid">perfilid</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Insertar Usuario</button>
+            </form>
+        </div>
+
+
+        
+        
+            <!-- ************************ table patients database ************************ -->
+        
+            
+                <div class="recent-patients box">
+                        <table id="table" class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">fullname</th>
+                                    <th scope="col">description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for r in row %}
+                                <tr>
+                                    <td>{{ r["id"] }} </td>
+                                    <td>{{ r["fullname"] }} </td>
+                                    <td>{{ r["description"] }}</td>
+                                </tr>
+                            {% endfor%}   
+                            </tbody>
+                        </table>
+                </div>
+
+       
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block titulo %} Dashboard - Administrador {% endblock %}
+{% block usuario %} Dashboard {% endblock %}
+
+{% block body %}
+
+<!-- ************************ indicators board ************************ -->
+
+<div class="home-content">
+    <div class="overview-boxes">
+        <div class="box">
+            <form class="form-signin" action="/index" method="PUT">
+                <img class="mb-4" src="{{ url_for('static', filename='/images/logo_cul_2015.png') }}" alt="" width="200" height="80">
+
+                <h1 class="h3 mb-3 fw-normal">Actializar perfil</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="id" name="id" placeholder="id">
+                    <label for="id">ID</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" id="perfilname" name="perfilname" placeholder="perfilname">
+                    <label for="perfilname">Perfil Name</label>
+                </div>
+                <div class="form-floating mt-3">
+                    <input type="text" class="form-control" id="Tipo" name="Tipo" placeholder="Tipo">
+                    <label for="Tipo">Descripcion</label>
+                </div>
+                
+                <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Actializar perfil</button>
+            </form>
+        </div>
+         <!-- ************************ table patients database ************************ -->
+        
+            
+         <div class="recent-patients box">
+            <table id="table" class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">fullname</th>
+                        <th scope="col">description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for r in row %}
+                    <tr>
+                        <td>{{ r["id"] }} </td>
+                        <td>{{ r["fullname"] }} </td>
+                        <td>{{ r["description"] }}</td>
+                    </tr>
+                {% endfor%}   
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

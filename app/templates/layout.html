@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> {% block titulo %} {% endblock %}</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/style_doctors.css">
+    <link rel="stylesheet" href="static/css/style_patients.css">
+    <link rel="stylesheet" href="static/css/style_appointments.css">
+    <link rel="stylesheet" href="static/css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="static/css/resultado.css"> -->
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ************************ sidebar ************************ -->
+    <div class="sidebar">
+        <div class="logo-details">            
+            <i class="fa fa-users"></i>
+            <span class="logo_name">Superadmin</span>
+            
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="{{url_for('getAll')}}" class="dashboard">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('getAll')}}" class="pacientes">                                       
+                    <i class="fa fa-user"></i>
+                    <span class="links_name">Estudiantes</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('getAll')}}" class="medicos">                    
+                    <i class="fa fa-user-md"></i>                    
+                    <span class="links_name">Asesores</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('getAll')}}" class="citas">
+                    <i class='bx bx-calendar'></i>
+                    <span class="links_name">Todos</span>
+                </a>
+            </li>
+            <li class="log_out">
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links_name">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <section class="home-section">
+        <!-- ************************ navigation bar ************************ -->
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">{% block usuario %} {% endblock %}</span>
+            </div>
+            <div class="logo-clinica">
+                <img src="static/images/logo_cul_2015.png" alt="">
+            </div>
+            <!-- <div class="search-box">
+                <input type="text" placeholder="Buscar...">
+                <i class='bx bx-search'></i>
+            </div> -->
+            <div class="profile-details">                
+                <i class="fa fa-users"></i>          
+                <span class="admin_name">Administrador</span>
+            </div>
+        </nav>
+
+        {% block body %}
+        <!--
+
+            INSERTE CÓDIGO DE LA PÁGINA AQUÍ
+        
+        -->
+
+        {% endblock %}
+
+
+
+    </section>
+    <!-- ************************ js ************************-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+    <script>
+        
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+        }
+    </script>
+</body>
+</html>
